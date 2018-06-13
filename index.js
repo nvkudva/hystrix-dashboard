@@ -13,9 +13,9 @@ module.exports = function configure(app, config) {
     app = app || express();
 
     app.use('/hystrix.stream', function hystrixStreamResponse(request, response) {
-        response.append('Content-Type', 'text/event-stream;charset=UTF-8');
-        response.append('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
-        response.append('Pragma', 'no-cache');
+        response.set('Content-Type', 'text/event-stream;charset=UTF-8');
+        response.set('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
+        response.set('Pragma', 'no-cache');
 
         // We need to deal with the case when more than one hystrixjs module is used
         // So we start observing them all for now
